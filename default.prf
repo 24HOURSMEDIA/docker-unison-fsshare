@@ -1,0 +1,15 @@
+root=/mnt/master
+root=/mnt/replica
+ignore=Path .idea
+ignore=Path .git
+ignore=Path var/log
+ignore=Path var/cache
+auto=true
+batch=true
+confirmbigdel=true
+fastcheck=true
+group=false
+owner=false
+prefer=newer
+times=true
+silent=true

@@ -1,0 +1,21 @@
+version: '2.3'
+
+
+services:
+  # lsyncd container to sync up host mount and named volume:
+  unison:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/mnt/master:delegated
+      - replica:/mnt/replica
+  mounted:
+    image: alpine:latest
+    entrypoint: ["tail", "-f", "/dev/null"]
+    depends_on:
+      - unison
+    volumes:
+      - replica:/mnt/replica
+volumes:
+  replica: {}
